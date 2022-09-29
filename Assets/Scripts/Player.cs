@@ -21,11 +21,10 @@ public class Player : MonoBehaviour
         TL.Direction actualFacingDirection = TL.directionOf(movement);
         if(actualFacingDirection != TL.Direction.None)
             facingDirection = actualFacingDirection;
-
         animator.SetFloat("horizontal", movement.x);
         animator.SetFloat("vertical", movement.y);
         animator.SetFloat("speed", movement.sqrMagnitude);
-        animator.SetInteger("facingDirection", (int)facingDirection);
+        animator.SetFloat("facingDirection", (float)facingDirection);
     }
 
     void FixedUpdate()
