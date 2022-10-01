@@ -6,10 +6,13 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
-    Vector2 movement;
-    TL.Direction facingDirection = TL.Direction.Down;
+    public Vector2 movement;
+    public TL.Direction facingDirection = TL.Direction.Down;
 
     public Animator animator;
+
+    public ArrowBehaviour ArrowPrefab;
+    public ArrowOffset launch;
     
     // Update is called once per frame
     void Update()
@@ -25,6 +28,11 @@ public class Player : MonoBehaviour
         animator.SetFloat("vertical", movement.y);
         animator.SetFloat("speed", movement.sqrMagnitude);
         animator.SetFloat("facingDirection", (float)facingDirection);
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(ArrowPrefab, launch.transform.position, launch.transform.rotation);
+        }
     }
 
     void FixedUpdate()
