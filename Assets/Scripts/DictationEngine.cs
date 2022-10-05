@@ -2,14 +2,19 @@ using UnityEngine;
 using UnityEngine.Windows.Speech;
 public class DictationEngine : MonoBehaviour
 {
-  protected DictationRecognizer dictationRecognizer;
-  void Start()
+  public DictationRecognizer dictationRecognizer;
+  public string resultOfRecognition;
+
+  // void Update()
+  // {
+  //   if (Input.GetKeyDown(KeyCode.Space) && !hasStarted)
+  //   {
+  //     StartDictationEngine();
+  //   }
+  // }
+  public void DictationRecognizer_OnDictationHypothesis(string text)
   {
-    StartDictationEngine();
-  }
-  private void DictationRecognizer_OnDictationHypothesis(string text)
-  {
-    Debug.Log("Dictation hypothesis: " + text);
+    // Debug.Log("Dictation hypothesis: " + text);
   }
   private void DictationRecognizer_OnDictationComplete(DictationCompletionCause completionCause)
   {
@@ -32,9 +37,10 @@ public class DictationEngine : MonoBehaviour
         break;
     }
   }
-  private void DictationRecognizer_OnDictationResult(string text, ConfidenceLevel confidence)
+  public void DictationRecognizer_OnDictationResult(string text, ConfidenceLevel confidence)
   {
-    Debug.Log("Dictation result: " + text);
+    // Debug.Log("Dictation result: " + text);
+    resultOfRecognition = text;
   }
   private void DictationRecognizer_OnDictationError(string error, int hresult)
   {
@@ -45,7 +51,7 @@ public class DictationEngine : MonoBehaviour
   {
     CloseDictationEngine();
   }
-  private void StartDictationEngine()
+  public void StartDictationEngine()
   {
     dictationRecognizer = new DictationRecognizer();
     dictationRecognizer.DictationHypothesis += DictationRecognizer_OnDictationHypothesis;
