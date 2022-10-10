@@ -39,7 +39,6 @@ public class EnemyBase : MonoBehaviour
     }
 
     private void OnCollisionStay2D(Collision2D other){
-        TakeDamage(10f);
         if (other.gameObject.tag == "Player"){
             if (attackSpeed <= canAttack){
                 other.gameObject.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
