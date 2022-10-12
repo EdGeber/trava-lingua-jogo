@@ -792,6 +792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultOfRecognition: 
+  hypothesisOfRecognition: 
 --- !u!4 &1290247113
 Transform:
   m_ObjectHideFlags: 0
