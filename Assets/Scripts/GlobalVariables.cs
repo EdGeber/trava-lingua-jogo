@@ -1,9 +1,11 @@
-using UnityEngine;
-using UnityEngine.Windows.Speech;
-using System.Threading;
 using System.Collections;
-public class DictationEngine : MonoBehaviour
+using System.Collections.Generic;
+using UnityEngine.Windows.Speech;
+using UnityEngine;
+
+public class GlobalVariables : MonoBehaviour
 {
+  public static GlobalVariables instance;
   public DictationRecognizer dictationRecognizer;
   public string resultOfRecognition;
   public string hypothesisOfRecognition;
@@ -50,13 +52,12 @@ public class DictationEngine : MonoBehaviour
   }
   public void StartRecognizingAudio()
   {
-    // dictationRecognizer = new DictationRecognizer();
-    // dictationRecognizer.DictationHypothesis += DictationRecognizer_OnDictationHypothesis;
-    // dictationRecognizer.DictationResult += DictationRecognizer_OnDictationResult;
-    // dictationRecognizer.DictationComplete += DictationRecognizer_OnDictationComplete;
-    // dictationRecognizer.DictationError += DictationRecognizer_OnDictationError;
-    // dictationRecognizer.Start();
-    GlobalVariables.instance.StartRecognizingAudio();
+    dictationRecognizer = new DictationRecognizer();
+    dictationRecognizer.DictationHypothesis += DictationRecognizer_OnDictationHypothesis;
+    dictationRecognizer.DictationResult += DictationRecognizer_OnDictationResult;
+    dictationRecognizer.DictationComplete += DictationRecognizer_OnDictationComplete;
+    dictationRecognizer.DictationError += DictationRecognizer_OnDictationError;
+    dictationRecognizer.Start();
   }
   private void CloseDictationEngine()
   {
@@ -74,8 +75,21 @@ public class DictationEngine : MonoBehaviour
     }
   }
 
-  public void GetRecognizedAudio()
+  public string GetRecognizedAudio()
   {
-    GlobalVariables.instance.GetRecognizedAudio();
+    CloseDictationEngine();
+    return hypothesisOfRecognition;
+  }
+
+  // Start is called before the first frame update
+  void Start()
+  {
+
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+
   }
 }

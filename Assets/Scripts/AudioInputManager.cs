@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Text;
 using System.Globalization;
 using System;
+using System.Threading;
+using UnityEngine.Windows.Speech;
 using TMPro;
 
 public class AudioInputManager : MonoBehaviour
@@ -15,9 +14,19 @@ public class AudioInputManager : MonoBehaviour
   public TextMeshProUGUI RecognitionResult;
   public TextMeshProUGUI TravaLingua;
   private int numPalavrasIguais = 0;
+  private string recognitionResultString;
+  private Thread startRecognitionThread = null;
+  private Thread stopRecognitionThread = null;
+  private static DictationRecognizer dictationRecognizer;
 
   private bool hasStarted = false;
   private string[] travaLinguaArray;
+
+  private void Awake()
+  {
+    startRecognitionThread = new Thread(dictationEngine.StartRecognizingAudio);
+    stopRecognitionThread = new Thread(dictationEngine.GetRecognizedAudio);
+  }
   // Start is called before the first frame update
   void Start()
   {
@@ -29,12 +38,20 @@ public class AudioInputManager : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.Space) && !hasStarted)
     {
-      dictationEngine.StartDictationEngine();
+      if (stopRecognitionThread.IsAlive)
+      {
+        stopRecognitionThread.Abort();
+      }
+      // dictationEngine.StartRecognizingAudio();
+      startRecognitionThread.Start();
       hasStarted = true;
     }
-    if (Input.GetKeyDown(KeyCode.Return))
+    if (Input.GetKeyDown(KeyCode.Return) && hasStarted)
     {
-      RecognitionResult.text = dictationEngine.resultOfRecognition;
+      startRecognitionThread.Abort();
+      stopRecognitionThread.Start();
+      RecognitionResult.text = GlobalVariables.instance.resultOfRecognition;
+      hasStarted = false;
       string[] recognitionResultArray = RecognitionResult.text.Split(" ");
       for (int i = 0; i < travaLinguaArray.Length; i++)
       {
