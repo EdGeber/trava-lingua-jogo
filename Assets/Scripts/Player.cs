@@ -11,10 +11,14 @@ public class Player : MonoBehaviour
 
     public Animator animator;
 
-    public ArrowBehaviour ArrowPrefab;
-    public ArrowOffset launch;
-    
-    // Update is called once per frame
+    public PaintBomb BombPrefab;
+
+    private Camera cam;
+    Vector3 mouseWorldPos = new();
+    void Start()
+    {
+        cam = Camera.main;
+    }
     void Update()
     {
         // TODO: use Unity's new InputSystem instead of Input (https://youtu.be/Yjee_e4fICc)
@@ -29,9 +33,13 @@ public class Player : MonoBehaviour
         animator.SetFloat("speed", movement.sqrMagnitude);
         animator.SetFloat("facingDirection", (float)facingDirection);
 
+        // Transforms the Screen position to World position using the current mouse position
+        // Reference: https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html
+        mouseWorldPos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
+
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(ArrowPrefab, launch.transform.position, launch.transform.rotation);
+            Instantiate(BombPrefab, mouseWorldPos, transform.rotation);
         }
     }
 
