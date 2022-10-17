@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3646208525597204189}
   - component: {fileID: 3646208525597204188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PaintBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuddlePrefab: {fileID: 950502771186650928, guid: b491ca78b08e29d4a8e617dcd8a76639, type: 3}
   puddleSpawnTimer: 2
+  puddleRemotionTimer: 2
   timerIsRunning: 0
+  destroyPuddle: 1
