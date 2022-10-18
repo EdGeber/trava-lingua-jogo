@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 1189545536}
   - component: {fileID: 1189545535}
   - component: {fileID: 1189545540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfaef9aa8a3433a9f8fae6f9dfac0673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.7
   player: {fileID: 1861495177}
   attackDamage: 25
   attackSpeed: 1
@@ -671,8 +671,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1242614345
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6fd30714e90845c97a9e730a1df34268, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -788,8 +788,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1861495177}
   - component: {fileID: 1861495176}
-  - component: {fileID: 1861495179}
   - component: {fileID: 1861495180}
+  - component: {fileID: 1861495179}
   - component: {fileID: 1861495181}
   - component: {fileID: 1861495178}
   - component: {fileID: 1861495182}
@@ -838,8 +838,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2068757311
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cc805c6de39f9cd6585eff0491075051, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
