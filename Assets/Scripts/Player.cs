@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private TL TL;
+
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Vector2 movement;
