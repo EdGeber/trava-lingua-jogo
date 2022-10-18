@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public Vector3 mouseWorldPos = new();
     void Start()
     {
+        TL = GameObject.Find("/System/TL").GetComponent<TL>();
         cam = Camera.main;
     }
     void Update()

@@ -669,7 +669,7 @@ MonoBehaviour:
   player: {fileID: 1861495177}
   attackDamage: 25
   attackPeriod: 1
-  attackDistance: 0.25
+  attackDistance: 0.05
 --- !u!212 &1189545538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -995,13 +995,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a9f3793e79838ceba7499bcdd8dd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TL: {fileID: 1414539186}
+  TL: {fileID: 0}
   moveSpeed: 1.5
   rb: {fileID: 1861495179}
   movement: {x: 0, y: 0}
   facingDirection: 2
   animator: {fileID: 1861495180}
   BombPrefab: {fileID: 3646208525597204188, guid: 598f42fdd6db54c4b9813c05367da32f, type: 3}
+  mouseWorldPos: {x: 0, y: 0, z: 0}
 --- !u!50 &1861495179
 Rigidbody2D:
   serializedVersion: 4
