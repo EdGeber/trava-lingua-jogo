@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 // tongue twister API
 // TL stands for trava-língua
-public static class TL {
+public class TL : MonoBehaviour {
     const float EPSILON = (float) 1e-6;
+
+    // DO NOT ADD NON-STATIC PROPERTIES!!!
 
     [System.Flags]
     public enum Direction
@@ -19,7 +22,7 @@ public static class TL {
         DownLeft  = Down | Left    // 10
     }
 
-    public static Direction directionOf(Vector2 v) {
+    public Direction directionOf(Vector2 v) {
         Direction d = Direction.None;
         
         //                      d = d | Direction.Right
@@ -30,5 +33,15 @@ public static class TL {
         else if(v.y < -EPSILON) d |= Direction.Down;
 
         return d;
+    }
+
+    private IEnumerator runAfterDelayHelper(System.Action callback, float delay) {
+        yield return new WaitForSeconds(delay);
+        callback();
+    }
+
+    public void runAfterDelay(System.Action callback, float delay) {
+        // if you want to learn about it: https://docs.unity3d.com/Manual/Coroutines.html
+        StartCoroutine(runAfterDelayHelper(callback, delay));
     }
 }

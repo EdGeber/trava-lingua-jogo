@@ -2,24 +2,20 @@ using UnityEngine;
 
 public class PaintPuddle : MonoBehaviour
 {
+    private TL TL;
     public float puddleRemotionTimer = 2;
-    public bool timerIsRunning = false;
-    private void Start()
-    {
-        timerIsRunning = true;
+    public float paintDuration = 5;
+
+    private void Start() {
+        TL = GameObject.Find("/System/TL").GetComponent<TL>();
+        Destroy(gameObject, puddleRemotionTimer);
     }
-    void Update()
-    {
-        if (timerIsRunning)
-        {
-            if (puddleRemotionTimer > 0)
-            {
-                puddleRemotionTimer -= Time.deltaTime;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+
+    private void OnTriggerEnter2D(Collider2D collider) {
+        if(collider.gameObject.tag == "Enemy") {
+            EnemyHealth eh = collider.gameObject.GetComponent<EnemyHealth>();
+            eh.isPainted = true;
+            TL.runAfterDelay(() => eh.isPainted = false, paintDuration);
         }
     }
 }
