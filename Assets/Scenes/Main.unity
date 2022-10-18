@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 1189545536}
   - component: {fileID: 1189545535}
   - component: {fileID: 1189545540}
+  - component: {fileID: 1189545541}
   m_Layer: 7
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -629,9 +630,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.7
+  rb: {fileID: 1189545541}
   player: {fileID: 1861495177}
   attackDamage: 25
   attackSpeed: 1
+  attackDistance: 0.05
   maxHealth: 50
 --- !u!212 &1189545538
 SpriteRenderer:
@@ -716,6 +719,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0052382946, y: -0.024445236}
   m_Size: {x: 0.173805, y: 0.30110955}
   m_Direction: 0
+--- !u!50 &1189545541
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189545534}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1290247111
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +917,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861495175}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

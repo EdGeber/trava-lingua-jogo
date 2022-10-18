@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {   
-    public float speed = 3f;
-    public Transform player;
-    private Animator anim;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform player;
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private float attackDistance = 0.05f;
+    private Animator anim;
     
     //[Header("Health")] descobrir para que servem Headers
 
@@ -30,21 +32,24 @@ public class EnemyBase : MonoBehaviour
     }
 
     private void Update(){
-        Vector3 direction = player.position - transform.position;
-        direction.Normalize();
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        anim.SetFloat("horizontal", direction.x);
-        anim.SetFloat("vertical", direction.y);
-        anim.SetFloat("health", health);
+        canAttack += Time.deltaTime;
     }
-
-    private void OnCollisionStay2D(Collision2D other){
-        if (other.gameObject.tag == "Player"){
+    
+    void FixedUpdate()
+    {
+        Vector2 displacement = player.position - transform.position;
+        if(attackDistance < displacement.magnitude) {
+            rb.MovePosition(rb.position + displacement.normalized*speed*Time.fixedDeltaTime);
+            anim.SetFloat("horizontal", displacement.x);
+            anim.SetFloat("vertical", displacement.y);
+            anim.SetFloat("health", health);
+        } else {
+            // TODO: attack animation
+            anim.SetFloat("horizontal", 0);
+            anim.SetFloat("vertical", 0);
             if (attackSpeed <= canAttack){
-                other.gameObject.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
-                canAttack = 0f;            
-            } else{
-                canAttack += Time.deltaTime;
+                player.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
+                canAttack = 0f;
             }
         }
     }
