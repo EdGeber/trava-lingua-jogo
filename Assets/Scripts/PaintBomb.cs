@@ -4,11 +4,12 @@ public class PaintBomb : MonoBehaviour
 {
     public PaintPuddle PuddlePrefab;
 
-    public float puddleSpawnTimer = 2;
-    public float puddleRemotionTimer = 2;
+    public float puddleSpawnTimer = 2f;
+    public float bombRemotionTimer = 2f;
     public bool timerIsRunning = false;
     public bool destroyPuddle = true;
-    private void Start()
+
+    void Start()
     {
         timerIsRunning = true;
     }
@@ -16,21 +17,22 @@ public class PaintBomb : MonoBehaviour
     {
         if (timerIsRunning)
         {
-            if (puddleSpawnTimer > 0)
+            if (puddleSpawnTimer > 0f)
             {
                 puddleSpawnTimer -= Time.deltaTime;
             }
             else
             {
                 Instantiate(PuddlePrefab, transform.position, transform.rotation);
-                puddleSpawnTimer = 0;
+                puddleSpawnTimer = 0f;
                 timerIsRunning = false;
             }
-        } else
+        }
+        else
         {
-            if (puddleRemotionTimer > 0)
+            if (bombRemotionTimer > 0f)
             {
-                puddleRemotionTimer -= Time.deltaTime;
+                bombRemotionTimer -= Time.deltaTime;
             }
             else
             {

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public PaintBomb BombPrefab;
 
     private Camera cam;
-    Vector3 mouseWorldPos = new();
+    public Vector3 mouseWorldPos = new();
     void Start()
     {
         cam = Camera.main;
