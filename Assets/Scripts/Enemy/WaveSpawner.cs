@@ -1,7 +1,7 @@
 using UnityEngine;
 [System.Serializable]
 
-public class Wave{
+public class Wave {
     public string waveName;
     public int enemyCount;
     public GameObject[] Enemy;

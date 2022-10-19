@@ -8,9 +8,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackPeriod = 1f;
     [SerializeField] private float attackDistance = 0.05f;
-    [System.NonSerialized]
     private Animator anim;
     public float health = 50f;
+    public bool isPainted = false;
   
     
     //[Header("Health")] descobrir para que servem Headers
@@ -39,16 +39,16 @@ public class EnemyBase : MonoBehaviour
             anim.SetFloat("vertical", 0);
             anim.SetFloat("vitality", health);
             if (attackPeriod <= canAttack){
-                TakeDamage(20f);
                 player.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
                 anim.SetBool("isMoving", false);
                 canAttack = 0f;
             }
         }
     }
+
     public void TakeDamage(float damage){
         health -= damage;
-        if (health <= 0){
+        if (health <= 0) {
             attackPeriod = 100f;
             Destroy(gameObject, 0.53f); //delay de 0.53 segundos pra bater com a animação
         }

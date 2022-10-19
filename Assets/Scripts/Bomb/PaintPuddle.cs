@@ -13,9 +13,9 @@ public class PaintPuddle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "Enemy") {
-            EnemyHealth eh = collider.gameObject.GetComponent<EnemyHealth>();
-            eh.isPainted = true;
-            TL.runAfterDelay(() => eh.isPainted = false, paintDuration);
+            EnemyBase enemy = collider.gameObject.GetComponent<EnemyBase>();
+            enemy.isPainted = true;
+            TL.runAfterDelay(() => enemy.isPainted = false, paintDuration);
         }
     }
 }

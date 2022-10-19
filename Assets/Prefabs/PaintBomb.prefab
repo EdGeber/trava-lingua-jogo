@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1262614427
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3646208525597204178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d62081aa2994754eb299c9e1ebb8626, type: 3}
+  m_Script: {fileID: 11500000, guid: ea124a0d7c9ac1f428383e60ec442893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PuddlePrefab: {fileID: 950502771186650928, guid: b491ca78b08e29d4a8e617dcd8a76639, type: 3}
