@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Mudar a remoção para opacidade 0, e criar a função para recuperar
-    // Assim, o coração perdido pode ser recuperado depois
     public void RemoveHeart(int heart)
     {
-        Destroy(transform.GetChild(heart).gameObject);
+        GameObject heartObj = transform.GetChild(heart).gameObject;
+        SpriteRenderer heartSprite = heartObj.GetComponent<SpriteRenderer>();
+        heartSprite.color = new Color(1f,1f,1f,0f);
     }
 }
