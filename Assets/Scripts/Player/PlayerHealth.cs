@@ -19,10 +19,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateHealth(float modifier){
         health += modifier;
+
         if (modifier == -10f){
             healthObject.GetComponent<Health>().RemoveHeart(heart);
             heart -= 1;
         }
+        
         if (health > maxHealth){
             health = maxHealth;
         } else if (health <= 0f){

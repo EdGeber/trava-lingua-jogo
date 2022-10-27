@@ -5,7 +5,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float speed = 3f;
     [SerializeField] private Rigidbody2D rb;
     private Transform player;
-    [SerializeField] private float attackDamage = 10f;
+    private float attackDamage;
     [SerializeField] private float attackPeriod = 1f;
     [SerializeField] private float attackDistance = 0.05f;
     private Animator anim;
@@ -17,6 +17,7 @@ public class EnemyBase : MonoBehaviour
     private float canAttack;
 
     private void Start(){
+        attackDamage = 10f;
         anim = GetComponent<Animator>();
         player = GameObject.Find("Player").GetComponent<Transform>();
     }
