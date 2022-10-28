@@ -3,6 +3,12 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
   [SerializeField] private float speed = 3f;
+  public float Speed
+  {
+    get { return speed; }
+    set { speed = value; }
+  }
+  public float InitialSpeed { get; set; }
   [SerializeField] private Rigidbody2D rb;
   private Transform player;
   [SerializeField] private float attackDamage = 10f;
@@ -21,6 +27,7 @@ public class EnemyBase : MonoBehaviour
   {
     anim = GetComponent<Animator>();
     player = GameObject.Find("Player").GetComponent<Transform>();
+    this.InitialSpeed = this.speed;
   }
 
   private void Update()
