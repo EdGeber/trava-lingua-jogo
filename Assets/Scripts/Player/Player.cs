@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public TL.Direction facingDirection = TL.Direction.Down;
 
     public Animator animator;
+    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
 
     void Start()
     {
@@ -21,22 +22,28 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        // TODO: use Unity's new InputSystem instead of Input (https://youtu.be/Yjee_e4fICc)
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        playerPos = transform.position;
-        
-        TL.Direction actualFacingDirection = TL.directionOf(movement);
-        if(actualFacingDirection != TL.Direction.None)
-            facingDirection = actualFacingDirection;
-        animator.SetFloat("horizontal", movement.x);
-        animator.SetFloat("vertical", movement.y);
-        animator.SetFloat("speed", movement.sqrMagnitude);
-        animator.SetFloat("facingDirection", (float)facingDirection);
+        if (!gameIsPaused)
+        {
+            // TODO: use Unity's new InputSystem instead of Input (https://youtu.be/Yjee_e4fICc)
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            playerPos = transform.position;
+            
+            TL.Direction actualFacingDirection = TL.directionOf(movement);
+            if(actualFacingDirection != TL.Direction.None)
+                facingDirection = actualFacingDirection;
+            animator.SetFloat("horizontal", movement.x);
+            animator.SetFloat("vertical", movement.y);
+            animator.SetFloat("speed", movement.sqrMagnitude);
+            animator.SetFloat("facingDirection", (float)facingDirection);
+        }
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement.normalized*moveSpeed*Time.fixedDeltaTime);
+        if (!gameIsPaused)
+        {
+            rb.MovePosition(rb.position + movement.normalized*moveSpeed*Time.fixedDeltaTime);
+        }
     }
 }
