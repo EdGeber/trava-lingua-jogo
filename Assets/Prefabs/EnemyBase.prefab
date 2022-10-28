@@ -102,10 +102,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.7
   rb: {fileID: 9080953483971606739}
-  attackDamage: 25
+  attackDamage: 0
   attackPeriod: 1
   attackDistance: 0.05
   health: 50
+  isPainted: 0
 --- !u!95 &9080953483971606737
 Animator:
   serializedVersion: 4
