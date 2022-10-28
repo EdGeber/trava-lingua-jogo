@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a50bcb06e362349bad80b04fdc9c34, type: 3}
   m_Name: AbilityManagerObj
   m_EditorClassIdentifier: 
-  slowEnemiesAbility: {fileID: 0}
+  slowEnemiesAbility: {fileID: 11400000, guid: 0fb09bf75860a8e4bbc4ba1d372d3b98, type: 2}
