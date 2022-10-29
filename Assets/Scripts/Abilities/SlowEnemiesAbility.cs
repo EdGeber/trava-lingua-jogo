@@ -8,7 +8,7 @@ public class SlowEnemiesAbility : AbstractAbilityBase
   private float slowFactor = 0.1f;
   private List<EnemyBase> slowedEnemies;
   private int slowDuration = 5;
-  public SlowEnemiesAbility() : base("Slow Enemies", 2, 1)
+  public SlowEnemiesAbility() : base("Slow Enemies", 2, 0)
   {
   }
 
@@ -26,18 +26,12 @@ public class SlowEnemiesAbility : AbstractAbilityBase
           enemy.Speed = enemy.Speed * slowFactor;
         }
       }
-      this.state = AbilityState.cooldown;
-      MonoInstance.Instance.StartCoroutine(waitToResetSpeed());
+      this.setAbilityStateOnCooldown();
+      MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, this.slowDuration);
     }
   }
 
-  IEnumerator waitToResetSpeed()
-  {
-    yield return new WaitForSeconds(this.slowDuration);
-    resetSpeed();
-  }
-
-  void resetSpeed()
+  protected override void resetAbility()
   {
     foreach (var enemy in slowedEnemies)
     {

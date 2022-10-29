@@ -33,4 +33,9 @@ public abstract class AbstractAbilityBase : ScriptableObject
   {
     this.state = AbilityState.ready;
   }
+
+  protected virtual void resetAbility()
+  {
+    this.setAbilityStateReady();
+  }
 }
