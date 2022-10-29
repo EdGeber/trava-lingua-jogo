@@ -15,7 +15,6 @@ public class EnemyBase : MonoBehaviour
     
     //[Header("Health")] descobrir para que servem Headers
     private float canAttack;
-    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
 
     private void Start(){
         attackDamage = 10f;
@@ -24,7 +23,7 @@ public class EnemyBase : MonoBehaviour
     }
 
     private void Update(){
-        if (!gameIsPaused)
+        if (!PauseBehaviour.gameIsPaused)
         {
             canAttack += Time.deltaTime;
         }

@@ -10,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     private const int bigDamage = 20;
     private bool canDealBigDamage = true;
     private const int attackCooldown = 2;
-    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameIsPaused)
+        if (!PauseBehaviour.gameIsPaused)
         {
             if (Input.GetButtonDown("Bomb")) throwBomb();
 

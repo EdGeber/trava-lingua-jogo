@@ -8,7 +8,6 @@ public class PaintBomb : MonoBehaviour
     public float bombRemotionTimer = 2f;
     public bool timerIsRunning = false;
     public bool destroyPuddle = true;
-    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
 
     void Start()
     {
@@ -16,7 +15,7 @@ public class PaintBomb : MonoBehaviour
     }
     void Update()
     {
-        if (!gameIsPaused)
+        if (!PauseBehaviour.gameIsPaused)
         {
             if (timerIsRunning)
             {

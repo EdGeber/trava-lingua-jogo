@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     public TL.Direction facingDirection = TL.Direction.Down;
 
     public Animator animator;
-    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
 
     void Start()
     {
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (!gameIsPaused)
+        if (!PauseBehaviour.gameIsPaused)
         {
             // TODO: use Unity's new InputSystem instead of Input (https://youtu.be/Yjee_e4fICc)
             movement.x = Input.GetAxisRaw("Horizontal");
@@ -41,9 +40,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!gameIsPaused)
-        {
-            rb.MovePosition(rb.position + movement.normalized*moveSpeed*Time.fixedDeltaTime);
-        }
+        rb.MovePosition(rb.position + movement.normalized*moveSpeed*Time.fixedDeltaTime);
     }
 }
