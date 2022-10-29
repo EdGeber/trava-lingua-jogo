@@ -35,6 +35,10 @@ public class PlayerAttack : MonoBehaviour
     {
       abilityManager.callCureAbility();
     }
+    if (Input.GetKeyDown(KeyCode.Alpha3))
+    {
+      abilityManager.callFreezeAbility();
+    }
   }
 
   void throwBomb()

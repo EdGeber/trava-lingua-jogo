@@ -9,6 +9,7 @@ public class EnemyBase : MonoBehaviour
     set { speed = value; }
   }
   public float InitialSpeed { get; set; }
+  public bool IsFreezed { get; set; }
   [SerializeField] private Rigidbody2D rb;
   private Transform player;
   [SerializeField] private float attackDamage = 10f;
@@ -38,7 +39,7 @@ public class EnemyBase : MonoBehaviour
   void FixedUpdate()
   {
     Vector2 displacement = player.position - transform.position;
-    if (attackDistance < displacement.magnitude)
+    if (attackDistance < displacement.magnitude && this.speed != 0)
     {
       rb.MovePosition(rb.position + displacement.normalized * speed * Time.fixedDeltaTime);
       anim.SetFloat("horizontal", displacement.x);
@@ -51,10 +52,10 @@ public class EnemyBase : MonoBehaviour
       anim.SetFloat("horizontal", 0);
       anim.SetFloat("vertical", 0);
       anim.SetFloat("vitality", health);
+      anim.SetBool("isMoving", false);
       if (attackPeriod <= canAttack)
       {
         player.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
-        anim.SetBool("isMoving", false);
         canAttack = 0f;
       }
     }

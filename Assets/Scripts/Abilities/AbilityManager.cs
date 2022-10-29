@@ -9,22 +9,25 @@ public class AbilityManager : ScriptableObject
 
   public void callSlowEnemiesAbility()
   {
-    Debug.Log("SLOW ENEMIES");
     var slowEnemiesAbility = Abilities.Find(ability => ability.abilityID == 0);
     slowEnemiesAbility.callAbility();
   }
 
   public void callBigDamageAbility()
   {
-    Debug.Log("BIG DAMAGE");
     var bigDamageAbility = Abilities.Find(ability => ability.abilityID == 1);
     bigDamageAbility.callAbility();
   }
 
   public void callCureAbility()
   {
-    Debug.Log("CURE");
     var cureAbility = Abilities.Find(ability => ability.abilityID == 2);
     cureAbility.callAbility();
+  }
+
+  public void callFreezeAbility()
+  {
+    var freezeAbility = Abilities.Find(ability => ability.abilityID == 3);
+    freezeAbility.callAbility();
   }
 }

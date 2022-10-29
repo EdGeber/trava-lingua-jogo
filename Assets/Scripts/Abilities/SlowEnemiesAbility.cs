@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SlowEnemiesAbility : AbstractAbilityBase
 {
-  private float slowFactor = 0.1f;
+  private float slowFactor = 0.5f;
   private List<EnemyBase> slowedEnemies;
   private int slowDuration = 5;
   public SlowEnemiesAbility() : base("Slow Enemies", 2, 0)
