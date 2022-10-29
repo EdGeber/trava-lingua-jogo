@@ -15,28 +15,31 @@ public class PaintBomb : MonoBehaviour
     }
     void Update()
     {
-        if (timerIsRunning)
+        if (!PauseBehaviour.gameIsPaused)
         {
-            if (puddleSpawnTimer > 0f)
+            if (timerIsRunning)
             {
-                puddleSpawnTimer -= Time.deltaTime;
+                if (puddleSpawnTimer > 0f)
+                {
+                    puddleSpawnTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    Instantiate(PuddlePrefab, transform.position, transform.rotation);
+                    puddleSpawnTimer = 0f;
+                    timerIsRunning = false;
+                }
             }
             else
             {
-                Instantiate(PuddlePrefab, transform.position, transform.rotation);
-                puddleSpawnTimer = 0f;
-                timerIsRunning = false;
-            }
-        }
-        else
-        {
-            if (bombRemotionTimer > 0f)
-            {
-                bombRemotionTimer -= Time.deltaTime;
-            }
-            else
-            {
-                Destroy(gameObject);
+                if (bombRemotionTimer > 0f)
+                {
+                    bombRemotionTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

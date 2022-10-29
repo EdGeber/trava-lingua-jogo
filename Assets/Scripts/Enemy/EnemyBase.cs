@@ -22,7 +22,10 @@ public class EnemyBase : MonoBehaviour
     }
 
     private void Update(){
-        canAttack += Time.deltaTime;
+        if (!PauseBehaviour.gameIsPaused)
+        {
+            canAttack += Time.deltaTime;
+        }
     }
     
     void FixedUpdate()

@@ -21,10 +21,12 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!PauseBehaviour.gameIsPaused)
+        {
+            if (Input.GetButtonDown("Bomb")) throwBomb();
 
-        if (Input.GetButtonDown("Bomb")) throwBomb();
-
-        if(Input.GetButtonDown("BigDamage")) dealBigDamage();
+            if(Input.GetButtonDown("BigDamage")) dealBigDamage();
+        }
     }
 
     void throwBomb() {
