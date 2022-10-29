@@ -22,14 +22,18 @@ public class PlayerAttack : MonoBehaviour
 
     if (Input.GetButtonDown("Bomb")) throwBomb();
 
-    if (Input.GetButtonDown("BigDamage"))
+    if (Input.GetKeyDown(KeyCode.Mouse1))
     {
       abilityManager.callBigDamageAbility();
     }
 
-    if (Input.GetKeyDown(KeyCode.Q))
+    if (Input.GetKeyDown(KeyCode.Alpha1))
     {
       abilityManager.callSlowEnemiesAbility();
+    }
+    if (Input.GetKeyDown(KeyCode.Alpha2))
+    {
+      abilityManager.callCureAbility();
     }
   }
 
