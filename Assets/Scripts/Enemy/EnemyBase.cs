@@ -31,10 +31,11 @@ public class EnemyBase : MonoBehaviour
     this.InitialSpeed = this.speed;
   }
 
-  private void Update()
-  {
-    canAttack += Time.deltaTime;
-  }
+  private void Update(){
+    if (!PauseBehaviour.gameIsPaused)
+    {
+        canAttack += Time.deltaTime;
+    }
 
   void FixedUpdate()
   {

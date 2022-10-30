@@ -9,35 +9,34 @@ public class PlayerAttack : MonoBehaviour
   private Camera cam;
   [SerializeField] public AbilityManager abilityManager;
 
-  // Start is called before the first frame update
   void Start()
   {
     cam = Camera.main;
     TL = GameObject.Find("/System/TL").GetComponent<TL>();
   }
 
-  // Update is called once per frame
   void Update()
   {
+    if (!PauseBehaviour.gameIsPaused) {
+      if (Input.GetButtonDown("Bomb")) throwBomb();
 
-    if (Input.GetButtonDown("Bomb")) throwBomb();
+      if (Input.GetKeyDown(KeyCode.Mouse1))
+      {
+        abilityManager.callBigDamageAbility();
+      }
 
-    if (Input.GetKeyDown(KeyCode.Mouse1))
-    {
-      abilityManager.callBigDamageAbility();
-    }
-
-    if (Input.GetKeyDown(KeyCode.Alpha1))
-    {
-      abilityManager.callSlowEnemiesAbility();
-    }
-    if (Input.GetKeyDown(KeyCode.Alpha2))
-    {
-      abilityManager.callCureAbility();
-    }
-    if (Input.GetKeyDown(KeyCode.Alpha3))
-    {
-      abilityManager.callFreezeAbility();
+      if (Input.GetKeyDown(KeyCode.Alpha1))
+      {
+        abilityManager.callSlowEnemiesAbility();
+      }
+      if (Input.GetKeyDown(KeyCode.Alpha2))
+      {
+        abilityManager.callCureAbility();
+      }
+      if (Input.GetKeyDown(KeyCode.Alpha3))
+      {
+        abilityManager.callFreezeAbility();
+      }
     }
   }
 

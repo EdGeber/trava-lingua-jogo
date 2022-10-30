@@ -18,6 +18,7 @@ public class AudioInputManager : MonoBehaviour
 
   private bool hasStarted = false;
   private string[] travaLinguaArray;
+    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
   // Start is called before the first frame update
   void Start()
   {
@@ -27,29 +28,34 @@ public class AudioInputManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space) && !hasStarted)
+    if (!gameIsPaused)
     {
-      dictationEngine.StartDictationEngine();
-      hasStarted = true;
-    }
-    if (Input.GetKeyDown(KeyCode.Return))
-    {
-      RecognitionResult.text = dictationEngine.resultOfRecognition;
-      string[] recognitionResultArray = RecognitionResult.text.Split(" ");
-      for (int i = 0; i < travaLinguaArray.Length; i++)
+      if (Input.GetKeyDown(KeyCode.Space) && !hasStarted)
       {
-        if (i >= recognitionResultArray.Length)
-        {
-          break;
-        }
-        if (String.Equals(RemoveAccents(recognitionResultArray[i]).ToLower(), RemoveAccents(travaLinguaArray[i]).ToLower()))
-        {
-          numPalavrasIguais++;
-        }
+        dictationEngine.StartDictationEngine();
+        hasStarted = true;
       }
-      //   Debug.Log(dictationEngine.resultOfRecognition);
-      Debug.Log("Número de palavras iguais = " + numPalavrasIguais);
-      numPalavrasIguais = 0;
+      if (Input.GetKeyDown(KeyCode.Return))
+      {
+        RecognitionResult.text = dictationEngine.resultOfRecognition;
+        string[] recognitionResultArray = RecognitionResult.text.Split(" ");
+        
+        Debug.Log(travaLinguaArray);
+        for (int i = 0; i < travaLinguaArray.Length; i++)
+        {
+          if (i >= recognitionResultArray.Length)
+          {
+            break;
+          }
+          if (String.Equals(RemoveAccents(recognitionResultArray[i]).ToLower(), RemoveAccents(travaLinguaArray[i]).ToLower()))
+          {
+            numPalavrasIguais++;
+          }
+        }
+        //   Debug.Log(dictationEngine.resultOfRecognition);
+        Debug.Log("Número de palavras iguais = " + numPalavrasIguais);
+        numPalavrasIguais = 0;
+      }
     }
   }
 

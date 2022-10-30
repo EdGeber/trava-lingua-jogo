@@ -17,13 +17,17 @@ public class WaveSpawner : MonoBehaviour
     private int currentWaveNumber;
     private float nextSpawnTime;
     private bool canSpawn = true;
+    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
 
     private void Update(){
-        currentWave = waves[currentWaveNumber];
-        SpawnWave();
-        GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if(totalEnemies.Length == 0 && !canSpawn && (currentWaveNumber+1) != waves.Length){
-            SpawnNextWave();
+        if (!gameIsPaused)
+        {
+            currentWave = waves[currentWaveNumber];
+            SpawnWave();
+            GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if(totalEnemies.Length == 0 && !canSpawn && (currentWaveNumber+1) != waves.Length){
+                SpawnNextWave();
+            }
         }
     }
     void SpawnNextWave(){
