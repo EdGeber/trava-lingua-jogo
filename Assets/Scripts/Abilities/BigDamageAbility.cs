@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BigDamageAbility : AbstractAbilityBase
 {
-  private const int bigDamage = 20;
+  [SerializeField] private int bigDamage = 20;
 
   public BigDamageAbility() : base("Big Damage", 2, 1) { }
 

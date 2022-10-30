@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class CureAbility : AbstractAbilityBase
 {
-  private const float cureAmount = 20f;
+  [SerializeField] private float cureAmount = 20f;
 
   public CureAbility() : base("Cure", 3, 2) { }
 

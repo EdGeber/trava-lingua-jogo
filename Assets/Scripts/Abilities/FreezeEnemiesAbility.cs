@@ -6,10 +6,11 @@ using UnityEngine;
 public class FreezeEnemiesAbility : AbstractAbilityBase
 {
   private List<EnemyBase> freezedEnemies;
-  private int freezeDuration = 4;
+  [SerializeField] private int freezeDuration = 4;
 
   private void Start()
   {
+    Debug.Log("START FREEZE");
     this.setAbilityStateReady();
   }
 

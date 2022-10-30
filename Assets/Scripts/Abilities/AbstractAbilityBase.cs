@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class AbstractAbilityBase : ScriptableObject
 {
 
-  public new string name { get; set; }
-  public int cooldownTime { get; set; }
+  [SerializeField] public new string name;
+  [SerializeField] public int cooldownTime;
   protected Sprite image;
-  public int abilityID { get; set; }
+  [SerializeField] public int abilityID;
   protected enum AbilityState
   {
     ready, cooldown
