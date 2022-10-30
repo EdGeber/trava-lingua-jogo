@@ -6,7 +6,7 @@ using UnityEngine;
 public class FreezeEnemiesAbility : AbstractAbilityBase
 {
   private List<EnemyBase> freezedEnemies;
-  private const int freezeDuration = 7;
+  private int freezeDuration = 4;
 
   public FreezeEnemiesAbility() : base("Freeze", 3, 3) { }
 
@@ -24,7 +24,8 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
         }
       }
       this.setAbilityStateOnCooldown();
-      MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, this.cooldownTime);
+      MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, this.freezeDuration);
+      MonoInstance.Instance.runAfterDelay(() => { this.setAbilityStateReady(); }, this.cooldownTime);
     }
   }
 
@@ -34,6 +35,5 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
     {
       enemy.Speed = enemy.InitialSpeed;
     }
-    this.setAbilityStateReady();
   }
 }
