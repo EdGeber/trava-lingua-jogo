@@ -8,6 +8,11 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
   private List<EnemyBase> freezedEnemies;
   private int freezeDuration = 4;
 
+  private void Start()
+  {
+    this.setAbilityStateReady();
+  }
+
   public FreezeEnemiesAbility() : base("Freeze", 3, 3) { }
 
   public override void callAbility()
