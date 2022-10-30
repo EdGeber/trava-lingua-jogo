@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float health = 0f;
+    [SerializeField] private float health = 0f;
     [SerializeField] private float maxHealth = 100f;
     private int heart;
 
@@ -24,12 +24,12 @@ public class PlayerHealth : MonoBehaviour
             healthObject.GetComponent<Health>().RemoveHeart(heart);
             heart -= 1;
         }
-        
+
         if (health > maxHealth){
             health = maxHealth;
         } else if (health <= 0f){
             health = 0f;
-            
+
             // Debug.Log("Player is Dead"); //Fazer depois a morte do player propriamente
             SceneManager.LoadScene("GameOver");
         } 
