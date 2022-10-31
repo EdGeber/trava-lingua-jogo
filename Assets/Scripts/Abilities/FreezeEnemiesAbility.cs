@@ -1,17 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu]
 public class FreezeEnemiesAbility : AbstractAbilityBase
 {
   private List<EnemyBase> freezedEnemies;
-  private int freezeDuration = 4;
-
-  private void Start()
-  {
-    this.setAbilityStateReady();
-  }
+  [SerializeField] private int freezeDuration = 4;
 
   public FreezeEnemiesAbility() : base("Freeze", 3, 3) { }
 

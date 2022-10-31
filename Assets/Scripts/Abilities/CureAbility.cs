@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu]
 public class CureAbility : AbstractAbilityBase
 {
-  private const float cureAmount = 20f;
+  [SerializeField] private float cureAmount = 20f;
 
   public CureAbility() : base("Cure", 3, 2) { }
 

@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu]
 public class AbilityManager : ScriptableObject
 {
   [SerializeField] public List<AbstractAbilityBase> Abilities;
+
+  public void StartWithAbilitiesReady()
+  {
+    foreach (var ability in Abilities)
+    {
+      ability.setAbilityStateReady();
+    }
+  }
 
   public void callSlowEnemiesAbility()
   {

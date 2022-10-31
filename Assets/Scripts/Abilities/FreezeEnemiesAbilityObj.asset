@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c739c0d9fc510db41834e36cca6ad3f5, type: 3}
   m_Name: FreezeEnemiesAbilityObj
   m_EditorClassIdentifier: 
+  name: Freeze
+  cooldownTime: 3
+  abilityID: 3
+  freezeDuration: 4

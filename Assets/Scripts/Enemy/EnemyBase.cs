@@ -32,10 +32,11 @@ public class EnemyBase : MonoBehaviour
     this.InitialSpeed = this.speed;
   }
 
-  private void Update(){
+  private void Update()
+  {
     if (!PauseBehaviour.gameIsPaused)
     {
-        canAttack += Time.deltaTime;
+      canAttack += Time.deltaTime;
     }
   }
 
@@ -56,7 +57,7 @@ public class EnemyBase : MonoBehaviour
       anim.SetFloat("vertical", 0);
       anim.SetFloat("vitality", health);
       anim.SetBool("isMoving", false);
-      if (attackPeriod <= canAttack && attackDistance < displacement.magnitude)
+      if (attackPeriod <= canAttack && attackDistance >= displacement.magnitude)
       {
         player.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
         canAttack = 0f;

@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6f88f60632d2941ad982b7670df360, type: 3}
   m_Name: SlowEnemiesAbilityObj
   m_EditorClassIdentifier: 
+  name: Slow Enemies
+  cooldownTime: 2
+  abilityID: 0
+  slowFactor: 0.5
+  slowDuration: 5

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu]
 public class SlowEnemiesAbility : AbstractAbilityBase
 {
-  private float slowFactor = 0.5f;
+  [SerializeField] private float slowFactor = 0.5f;
   private List<EnemyBase> slowedEnemies;
-  private int slowDuration = 5;
+  [SerializeField] private int slowDuration = 5;
   public SlowEnemiesAbility() : base("Slow Enemies", 2, 0) { }
 
   public override void callAbility()
