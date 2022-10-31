@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f76a2ebb95ff1d49beff8bfb9bc7609, type: 3}
   m_Name: BigDamageAbilityObj
   m_EditorClassIdentifier: 
+  name: Big Damage
+  cooldownTime: 2
+  abilityID: 1
+  bigDamage: 20

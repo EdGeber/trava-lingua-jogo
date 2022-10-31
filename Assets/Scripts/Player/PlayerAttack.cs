@@ -13,11 +13,13 @@ public class PlayerAttack : MonoBehaviour
   {
     cam = Camera.main;
     TL = GameObject.Find("/System/TL").GetComponent<TL>();
+    abilityManager.StartWithAbilitiesReady();
   }
 
   void Update()
   {
-    if (!PauseBehaviour.gameIsPaused) {
+    if (!PauseBehaviour.gameIsPaused)
+    {
       if (Input.GetButtonDown("Bomb")) throwBomb();
 
       if (Input.GetKeyDown(KeyCode.Mouse1))
