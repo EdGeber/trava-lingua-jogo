@@ -9,12 +9,20 @@ using TMPro;
 
 public class AudioInputManager : MonoBehaviour
 {
-  [SerializeField] DictationEngine dictationEngine;
+  [SerializeField] public DictationEngine dictationEngine;
   [Header("Components")]
   public GameObject TextHUD;
-  public TextMeshProUGUI RecognitionResult;
+  public TextMeshProUGUI RecognitionHypothesis;
   public TextMeshProUGUI TravaLingua;
   private int numPalavrasIguais = 0;
+  public float correctWordsRatio = 0.0f;
+  private bool startRecognising = false;
+  private float timer = 0.0f;
+  public bool StartRecognising
+  {
+    get { return startRecognising; }
+    set { startRecognising = value; }
+  }
 
   private bool hasStarted = false;
   private string[] travaLinguaArray;
@@ -23,39 +31,43 @@ public class AudioInputManager : MonoBehaviour
   void Start()
   {
     travaLinguaArray = TravaLingua.text.Split(" ");
+    dictationEngine.StartDictationEngine();
   }
 
   // Update is called once per frame
   void Update()
   {
+
     if (!gameIsPaused)
     {
-      if (Input.GetKeyDown(KeyCode.Space) && !hasStarted)
+      if (startRecognising)
       {
-        dictationEngine.StartDictationEngine();
-        hasStarted = true;
-      }
-      if (Input.GetKeyDown(KeyCode.Return))
-      {
-        RecognitionResult.text = dictationEngine.resultOfRecognition;
-        string[] recognitionResultArray = RecognitionResult.text.Split(" ");
-        
-        Debug.Log(travaLinguaArray);
-        for (int i = 0; i < travaLinguaArray.Length; i++)
+        timer = timer + Time.deltaTime;
+        // DO SOMETHING
+        if (timer >= MonoInstance.recognitionDelay)
         {
-          if (i >= recognitionResultArray.Length)
+          RecognitionHypothesis.text = dictationEngine.resultOfHypotesis;
+          string[] recognitionHypothesisArray = RecognitionHypothesis.text.Split(" ");
+          for (int i = 0; i < travaLinguaArray.Length; i++)
           {
-            break;
+            if (i >= recognitionHypothesisArray.Length)
+            {
+              break;
+            }
+            if (String.Equals(RemoveAccents(recognitionHypothesisArray[i]).ToLower(), RemoveAccents(travaLinguaArray[i]).ToLower()))
+            {
+              numPalavrasIguais++;
+            }
           }
-          if (String.Equals(RemoveAccents(recognitionResultArray[i]).ToLower(), RemoveAccents(travaLinguaArray[i]).ToLower()))
-          {
-            numPalavrasIguais++;
-          }
+          //   Debug.Log(dictationEngine.resultOfRecognition);
+          //Debug.Log("Número de palavras iguais = " + numPalavrasIguais);
+          correctWordsRatio = (float)numPalavrasIguais / (float)travaLinguaArray.Length;
+          timer = 0.0f;
+          numPalavrasIguais = 0;
+          startRecognising = false;
         }
-        //   Debug.Log(dictationEngine.resultOfRecognition);
-        Debug.Log("Número de palavras iguais = " + numPalavrasIguais);
-        numPalavrasIguais = 0;
       }
+
     }
   }
 

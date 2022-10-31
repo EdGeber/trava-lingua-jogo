@@ -12,7 +12,7 @@ public class SlowEnemiesAbility : AbstractAbilityBase
 
   public SlowEnemiesAbility() : base("Slow Enemies", 2, 0) { }
 
-  public override void callAbility()
+  public override void callAbility(float effectFactor = 0.5f)
   {
     if (this.state == AbilityState.ready)
     {
@@ -24,7 +24,7 @@ public class SlowEnemiesAbility : AbstractAbilityBase
         if (enemy.isPainted)
         {
           slowedEnemies.Add(enemy);
-          enemy.Speed = enemy.Speed * this.slowFactor;
+          enemy.Speed = enemy.Speed * (this.slowFactor * effectFactor);
         }
       }
       this.setAbilityStateOnCooldown();

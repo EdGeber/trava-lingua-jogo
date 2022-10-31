@@ -22,7 +22,7 @@ public abstract class AbstractAbilityBase : ScriptableObject
     this.abilityID = abilityID;
   }
 
-  public abstract void callAbility();
+  public abstract void callAbility(float effectFactor = 1.0f);
 
   public virtual void setAbilityStateOnCooldown()
   {

@@ -11,7 +11,7 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
 
   public FreezeEnemiesAbility() : base("Freeze", 3, 3) { }
 
-  public override void callAbility()
+  public override void callAbility(float effectFactor = 1.0f)
   {
     if (this.state == AbilityState.ready)
     {

@@ -10,7 +10,7 @@ public class BigDamageAbility : AbstractAbilityBase
 
   public BigDamageAbility() : base("Big Damage", 2, 1) { }
 
-  public override void callAbility()
+  public override void callAbility(float effectFactor = 1.0f)
   {
     if (this.state == AbilityState.ready)
     {
