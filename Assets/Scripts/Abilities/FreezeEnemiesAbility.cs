@@ -6,7 +6,7 @@ using UnityEditor;
 [CreateAssetMenu]
 public class FreezeEnemiesAbility : AbstractAbilityBase
 {
-  private List<EnemyBase> freezedEnemies;
+  private List<EnemyBase> freezedEnemies = new List<EnemyBase>();
   [SerializeField] private int freezeDuration = 4;
 
   public FreezeEnemiesAbility() : base("Freeze", 3, 3) { }

@@ -7,8 +7,9 @@ using UnityEditor;
 public class SlowEnemiesAbility : AbstractAbilityBase
 {
   [SerializeField] private float slowFactor = 0.5f;
-  private List<EnemyBase> slowedEnemies;
+  private List<EnemyBase> slowedEnemies = new List<EnemyBase>();
   [SerializeField] private int slowDuration = 5;
+
   public SlowEnemiesAbility() : base("Slow Enemies", 2, 0) { }
 
   public override void callAbility()
