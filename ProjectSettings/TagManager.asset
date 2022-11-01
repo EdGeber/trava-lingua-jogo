@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2076584551
+    locked: 0
   - name: PaintPuddles
     uniqueID: 2860268957
     locked: 0
@@ -53,4 +56,7 @@ TagManager:
     locked: 0
   - name: Bombs
     uniqueID: 3032352869
+    locked: 0
+  - name: HUD
+    uniqueID: 2525966515
     locked: 0
