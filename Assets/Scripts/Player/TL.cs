@@ -36,6 +36,8 @@ public class TL : MonoBehaviour {
     }
 
     private IEnumerator runAfterDelayHelper(System.Action callback, float delay) {
+        // This works as expected even if the game pauses;
+        // see https://docs.unity3d.com/ScriptReference/WaitForSeconds.html
         yield return new WaitForSeconds(delay);
         callback();
     }

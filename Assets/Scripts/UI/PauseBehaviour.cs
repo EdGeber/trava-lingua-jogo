@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    public static bool gameIsPaused;
+    public static bool GameIsPaused { get; private set; }
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !gameIsPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameIsPaused)
         {
-            gameIsPaused = true;
+            GameIsPaused = true;
             PauseGame();
-        } else if (Input.GetKeyDown(KeyCode.Escape) && gameIsPaused)
+        } else if (Input.GetKeyDown(KeyCode.Escape) && GameIsPaused)
         {
-            gameIsPaused = false;
+            GameIsPaused = false;
             PauseGame();
         }
     }
 
     void PauseGame ()
     {
-        if(gameIsPaused)
+        if(GameIsPaused)
         {
             Time.timeScale = 0f;
         }

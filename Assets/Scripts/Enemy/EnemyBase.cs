@@ -34,7 +34,7 @@ public class EnemyBase : MonoBehaviour
 
   private void Update()
   {
-    if (!PauseBehaviour.gameIsPaused)
+    if (!PauseBehaviour.GameIsPaused)
     {
       canAttack += Time.deltaTime;
     }

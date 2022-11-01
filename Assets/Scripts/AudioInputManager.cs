@@ -18,7 +18,7 @@ public class AudioInputManager : MonoBehaviour
 
   private bool hasStarted = false;
   private string[] travaLinguaArray;
-    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
+    private bool gameIsPaused = PauseBehaviour.GameIsPaused;
   // Start is called before the first frame update
   void Start()
   {

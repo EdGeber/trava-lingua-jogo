@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (!PauseBehaviour.gameIsPaused)
+        if (!PauseBehaviour.GameIsPaused)
         {
             // TODO: use Unity's new InputSystem instead of Input (https://youtu.be/Yjee_e4fICc)
             movement.x = Input.GetAxisRaw("Horizontal");

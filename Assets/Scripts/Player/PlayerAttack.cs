@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
 
   void Update()
   {
-    if (!PauseBehaviour.gameIsPaused)
+    if (!PauseBehaviour.GameIsPaused)
     {
       if (Input.GetButtonDown("Bomb")) throwBomb();
 

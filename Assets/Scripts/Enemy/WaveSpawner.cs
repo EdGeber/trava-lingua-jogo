@@ -1,50 +1,48 @@
 using UnityEngine;
+using System;
 [System.Serializable]
-
-public class Wave {
-    public string waveName;
-    public int enemyCount;
-    public GameObject[] Enemy;
-    public float spawnInterval;
-}
 
 public class WaveSpawner : MonoBehaviour
 {
-    [SerializeField] Wave[] waves;
     public Transform[] spawnPoints;
+    [NonSerialized]
+    public int waveNumber = 1;
+    private TL TL;
+    private bool GameIsPaused { get => PauseBehaviour.GameIsPaused; }
+    [SerializeField]
+    private EnemyBase enemyPrefab;
 
-    private Wave currentWave;
-    private int currentWaveNumber;
-    private float nextSpawnTime;
-    private bool canSpawn = true;
-    private bool gameIsPaused = PauseBehaviour.gameIsPaused;
+    [SerializeField]
+    private float maxSpawnInterval = 2.5f;
+    [SerializeField]
+    private float minSpawnInterval = 0.1f;
+    [SerializeField]
+    private float spawnIntervalDecreasePerWave = 0.2f;
+    [SerializeField]
+    private float intervalBetweenWaves = 7f;
 
-    private void Update(){
-        if (!gameIsPaused)
-        {
-            currentWave = waves[currentWaveNumber];
-            SpawnWave();
-            GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if(totalEnemies.Length == 0 && !canSpawn && (currentWaveNumber+1) != waves.Length){
-                SpawnNextWave();
-            }
+    void Start() {
+        TL = GameObject.Find("/System/TL").GetComponent<TL>();
+        SpawnWaves();
+    }
+
+    void SpawnWaves() {
+        float numEnemies = waveNumber;
+        float spawnInterval = Math.Max(
+            maxSpawnInterval - spawnIntervalDecreasePerWave*waveNumber,
+            minSpawnInterval
+        );
+        float waveDuration = (numEnemies-1)*spawnInterval + intervalBetweenWaves;
+
+        for(int i=0; i<numEnemies; i++) {
+            EnemyBase randomEnemy = enemyPrefab;  //TODO: change to an actual random enemy
+            Transform RandomPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
+            TL.runAfterDelay(
+                () => Instantiate(randomEnemy, RandomPoint.position, Quaternion.identity),
+                i*spawnInterval
+            );
         }
-    }
-    void SpawnNextWave(){
-        currentWaveNumber++;
-        canSpawn = true;
-    }
-
-    void SpawnWave(){
-        if(canSpawn && nextSpawnTime < Time.time){
-            GameObject randomEnemy = currentWave.Enemy[0];
-            Transform RandomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Instantiate(randomEnemy, RandomPoint.position, Quaternion.identity);
-            currentWave.enemyCount--;
-            nextSpawnTime = Time.time + currentWave.spawnInterval;
-            if(currentWave.enemyCount == 0){
-                canSpawn = false;
-            }
-        }   
+        waveNumber++;
+        TL.runAfterDelay(() => SpawnWaves(), waveDuration);
     }
 }

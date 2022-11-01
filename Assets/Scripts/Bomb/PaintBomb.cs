@@ -15,7 +15,7 @@ public class PaintBomb : MonoBehaviour
     }
     void Update()
     {
-        if (!PauseBehaviour.gameIsPaused)
+        if (!PauseBehaviour.GameIsPaused)
         {
             if (timerIsRunning)
             {
