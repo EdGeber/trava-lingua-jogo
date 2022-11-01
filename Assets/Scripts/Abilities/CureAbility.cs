@@ -14,10 +14,15 @@ public class CureAbility : AbstractAbilityBase
   {
     if (this.state == AbilityState.ready)
     {
+      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+      squareColor.ChangeColor(2,true);
       PlayerHealth playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
       playerHealth.UpdateHealth(cureAmount);
       this.setAbilityStateOnCooldown();
-      MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, this.cooldownTime);
+      MonoInstance.Instance.runAfterDelay(() => { 
+        this.resetAbility();
+        squareColor.ChangeColor(2,false);
+      }, this.cooldownTime);
     }
   }
 

@@ -14,6 +14,8 @@ public class BigDamageAbility : AbstractAbilityBase
   {
     if (this.state == AbilityState.ready)
     {
+      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+      squareColor.ChangeColor(0,true);
       GameObject[] GOs = GameObject.FindGameObjectsWithTag("Enemy");
       foreach (GameObject GO in GOs)
       {
@@ -24,7 +26,10 @@ public class BigDamageAbility : AbstractAbilityBase
         }
       }
       this.setAbilityStateOnCooldown();
-      MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, this.cooldownTime);
+      MonoInstance.Instance.runAfterDelay(() => { 
+        this.resetAbility();
+        squareColor.ChangeColor(0,false);
+      }, this.cooldownTime);
     }
   }
 }

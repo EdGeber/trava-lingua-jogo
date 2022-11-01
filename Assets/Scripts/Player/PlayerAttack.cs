@@ -22,20 +22,20 @@ public class PlayerAttack : MonoBehaviour
     {
       if (Input.GetButtonDown("Bomb")) throwBomb();
 
-      if (Input.GetKeyDown(KeyCode.Mouse1))
+      if (Input.GetKeyDown(KeyCode.Alpha1))
       {
         abilityManager.callBigDamageAbility();
       }
 
-      if (Input.GetKeyDown(KeyCode.Alpha1))
+      if (Input.GetKeyDown(KeyCode.Alpha2))
       {
         abilityManager.callSlowEnemiesAbility();
       }
-      if (Input.GetKeyDown(KeyCode.Alpha2))
+      if (Input.GetKeyDown(KeyCode.Alpha3))
       {
         abilityManager.callCureAbility();
       }
-      if (Input.GetKeyDown(KeyCode.Alpha3))
+      if (Input.GetKeyDown(KeyCode.Alpha4))
       {
         abilityManager.callFreezeAbility();
       }

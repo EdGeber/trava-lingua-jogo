@@ -16,6 +16,8 @@ public class SlowEnemiesAbility : AbstractAbilityBase
   {
     if (this.state == AbilityState.ready)
     {
+      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+      squareColor.ChangeColor(1,true);
       var enemiesFoundOnCanvas = FindObjectsOfType(typeof(EnemyBase)) as EnemyBase[];
       foreach (var enemy in enemiesFoundOnCanvas)
       {
@@ -26,7 +28,10 @@ public class SlowEnemiesAbility : AbstractAbilityBase
         }
       }
       this.setAbilityStateOnCooldown();
-      MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, this.slowDuration);
+      MonoInstance.Instance.runAfterDelay(() => { 
+        this.resetAbility();
+        squareColor.ChangeColor(1,false);
+      }, this.slowDuration);
       MonoInstance.Instance.runAfterDelay(() => { this.setAbilityStateReady(); }, this.cooldownTime);
     }
   }

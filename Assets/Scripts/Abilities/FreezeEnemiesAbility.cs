@@ -15,6 +15,8 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
   {
     if (this.state == AbilityState.ready)
     {
+      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+      squareColor.ChangeColor(3,true);
       var enemiesFoundOnCanvas = FindObjectsOfType(typeof(EnemyBase)) as EnemyBase[];
       foreach (var enemy in enemiesFoundOnCanvas)
       {
@@ -25,7 +27,10 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
         }
       }
       this.setAbilityStateOnCooldown();
-      MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, this.freezeDuration);
+      MonoInstance.Instance.runAfterDelay(() => { 
+        this.resetAbility();
+        squareColor.ChangeColor(3,false);
+      }, this.freezeDuration);
       MonoInstance.Instance.runAfterDelay(() => { this.setAbilityStateReady(); }, this.cooldownTime);
     }
   }
