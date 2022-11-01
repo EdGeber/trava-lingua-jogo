@@ -21,9 +21,26 @@ public class PlayerHealth : MonoBehaviour
         health += modifier;
 
         if (modifier == -10f){
-            healthObject.GetComponent<Health>().RemoveHeart(heart);
-            heart -= 1;
+            healthObject.GetComponent<Health>().ManageHeart(heart, 0);
+            heart--;
+        } 
+        else if (modifier == 20f)
+        {
+            if (heart == 8)
+            {
+                heart++;
+                healthObject.GetComponent<Health>().ManageHeart(heart, 1);
+            } 
+            else if (heart < 8)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    heart++;
+                    healthObject.GetComponent<Health>().ManageHeart(heart, 1);
+                }
+            }
         }
+
 
         if (health > maxHealth){
             health = maxHealth;
