@@ -24,7 +24,6 @@ public class AudioInputManager : MonoBehaviour
     set { startRecognising = value; }
   }
 
-  private bool hasStarted = false;
   private string[] travaLinguaArray;
   private bool gameIsPaused = PauseBehaviour.GameIsPaused;
   // Start is called before the first frame update
