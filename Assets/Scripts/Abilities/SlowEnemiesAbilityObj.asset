@@ -15,5 +15,5 @@ MonoBehaviour:
   name: Slow Enemies
   cooldownTime: 2
   abilityID: 0
-  slowFactor: 0.1
+  maxSlowFactor: 0.5
   slowDuration: 5

@@ -7,16 +7,17 @@ using UnityEditor;
 public class FreezeEnemiesAbility : AbstractAbilityBase
 {
   private List<EnemyBase> freezedEnemies = new List<EnemyBase>();
-  [SerializeField] private int freezeDuration = 4;
+  [SerializeField] private float maxFreezeDuration = 4.0f;
 
   public FreezeEnemiesAbility() : base("Freeze", 3, 3) { }
 
-  public override void callAbility(float effectFactor = 1.0f)
+  public override void callAbility(float effectFactor = 0.0f)
   {
     if (this.state == AbilityState.ready)
     {
       SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
       squareColor.ChangeColor(3,true);
+      float freezeDuration = maxFreezeDuration * effectFactor;
       var enemiesFoundOnCanvas = FindObjectsOfType(typeof(EnemyBase)) as EnemyBase[];
       foreach (var enemy in enemiesFoundOnCanvas)
       {
@@ -24,6 +25,7 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
         {
           freezedEnemies.Add(enemy);
           enemy.Speed = 0;
+          enemy.isPainted = false;
         }
       }
       this.setAbilityStateOnCooldown();

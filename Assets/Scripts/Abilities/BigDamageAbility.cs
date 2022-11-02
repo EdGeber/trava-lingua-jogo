@@ -6,16 +6,17 @@ using UnityEditor;
 [CreateAssetMenu]
 public class BigDamageAbility : AbstractAbilityBase
 {
-  [SerializeField] private int bigDamage = 20;
+  [SerializeField] private float maxBigDamage = 20.0f;
 
   public BigDamageAbility() : base("Big Damage", 2, 1) { }
 
-  public override void callAbility(float effectFactor = 1.0f)
+  public override void callAbility(float effectFactor = 0.0f)
   {
     if (this.state == AbilityState.ready)
     {
       SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
       squareColor.ChangeColor(0,true);
+      float bigDamage = maxBigDamage * effectFactor;
       GameObject[] GOs = GameObject.FindGameObjectsWithTag("Enemy");
       foreach (GameObject GO in GOs)
       {
@@ -23,6 +24,7 @@ public class BigDamageAbility : AbstractAbilityBase
         if (enemy.isPainted)
         {
           enemy.TakeDamage(bigDamage);
+          enemy.isPainted = false;
         }
       }
       this.setAbilityStateOnCooldown();

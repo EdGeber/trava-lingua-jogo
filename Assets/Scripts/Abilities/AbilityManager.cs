@@ -16,40 +16,32 @@ public class AbilityManager : MonoBehaviour
     }
   }
 
-  public void callSlowEnemiesAbility()
+  private void callAbilityProcedure(int abilityID)
   {
-
-    var slowEnemiesAbility = Abilities.Find(ability => ability.abilityID == 0);
+    var selectedAbility = Abilities.Find(ability => ability.abilityID == abilityID);
     audioInputManager.StartRecognising = true;
     audioInputManager.dictationEngine.resultOfHypotesis = "";
     audioInputManager.dictationEngine.resultOfRecognition = "";
-    MonoInstance.Instance.runAfterDelay(() => { slowEnemiesAbility.callAbility(audioInputManager.correctWordsRatio); }, MonoInstance.recognitionDelay + 1.0f);
+    MonoInstance.Instance.runAfterDelay(() => { selectedAbility.callAbility(audioInputManager.correctWordsRatio); }, MonoInstance.recognitionDelay + 1.0f);
+  }
+
+  public void callSlowEnemiesAbility()
+  {
+    callAbilityProcedure(0);
   }
 
   public void callBigDamageAbility()
   {
-    var bigDamageAbility = Abilities.Find(ability => ability.abilityID == 1);
-    audioInputManager.StartRecognising = true;
-    audioInputManager.dictationEngine.resultOfHypotesis = "";
-    audioInputManager.dictationEngine.resultOfRecognition = "";
-    bigDamageAbility.callAbility();
+    callAbilityProcedure(1);
   }
 
   public void callCureAbility()
   {
-    var cureAbility = Abilities.Find(ability => ability.abilityID == 2);
-    audioInputManager.StartRecognising = true;
-    audioInputManager.dictationEngine.resultOfHypotesis = "";
-    audioInputManager.dictationEngine.resultOfRecognition = "";
-    cureAbility.callAbility();
+    callAbilityProcedure(2);
   }
 
   public void callFreezeAbility()
   {
-    var freezeAbility = Abilities.Find(ability => ability.abilityID == 3);
-    audioInputManager.StartRecognising = true;
-    audioInputManager.dictationEngine.resultOfHypotesis = "";
-    audioInputManager.dictationEngine.resultOfRecognition = "";
-    freezeAbility.callAbility();
+    callAbilityProcedure(3);
   }
 }
