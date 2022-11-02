@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using TMPro;
 
 public class AbilityManager : MonoBehaviour
 {
   [SerializeField] public List<AbstractAbilityBase> Abilities;
   [SerializeField] public AudioInputManager audioInputManager;
+  public TextMeshProUGUI TravaLingua;
 
   public void StartWithAbilitiesReady()
   {
@@ -19,20 +21,27 @@ public class AbilityManager : MonoBehaviour
   private void callAbilityProcedure(int abilityID)
   {
     var selectedAbility = Abilities.Find(ability => ability.abilityID == abilityID);
-    audioInputManager.StartRecognising = true;
-    audioInputManager.dictationEngine.resultOfHypotesis = "";
-    audioInputManager.dictationEngine.resultOfRecognition = "";
-    MonoInstance.Instance.runAfterDelay(() => { selectedAbility.callAbility(audioInputManager.correctWordsRatio); }, MonoInstance.recognitionDelay + 1.0f);
+    if (selectedAbility.state == AbstractAbilityBase.AbilityState.ready)
+    {
+      TravaLingua.text = TL.pegaTravaLinguas();
+      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+      squareColor.ChangeColor(abilityID, true);
+      audioInputManager.StartRecognising = true;
+      audioInputManager.dictationEngine.resultOfHypotesis = "";
+      audioInputManager.dictationEngine.resultOfRecognition = "";
+      MonoInstance.Instance.runAfterDelay(() => { selectedAbility.callAbility(1.0f); }, MonoInstance.recognitionDelay + 1.0f);
+      selectedAbility.setAbilityStateOnCooldown();
+    }
   }
 
   public void callSlowEnemiesAbility()
   {
-    callAbilityProcedure(0);
+    callAbilityProcedure(1);
   }
 
   public void callBigDamageAbility()
   {
-    callAbilityProcedure(1);
+    callAbilityProcedure(0);
   }
 
   public void callCureAbility()

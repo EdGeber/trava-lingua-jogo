@@ -9,32 +9,28 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
   private List<EnemyBase> freezedEnemies = new List<EnemyBase>();
   [SerializeField] private float maxFreezeDuration = 4.0f;
 
-  public FreezeEnemiesAbility() : base("Freeze", 3, 3) { }
+  public FreezeEnemiesAbility() : base("Freeze", 3.0f, 3) { }
 
   public override void callAbility(float effectFactor = 0.0f)
   {
-    if (this.state == AbilityState.ready)
+    SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+    float freezeDuration = maxFreezeDuration * effectFactor;
+    var enemiesFoundOnCanvas = FindObjectsOfType(typeof(EnemyBase)) as EnemyBase[];
+    foreach (var enemy in enemiesFoundOnCanvas)
     {
-      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
-      squareColor.ChangeColor(3,true);
-      float freezeDuration = maxFreezeDuration * effectFactor;
-      var enemiesFoundOnCanvas = FindObjectsOfType(typeof(EnemyBase)) as EnemyBase[];
-      foreach (var enemy in enemiesFoundOnCanvas)
+      if (enemy.isPainted)
       {
-        if (enemy.isPainted)
-        {
-          freezedEnemies.Add(enemy);
-          enemy.Speed = 0;
-          enemy.isPainted = false;
-        }
+        freezedEnemies.Add(enemy);
+        enemy.Speed = 0;
+        enemy.isPainted = false;
       }
-      this.setAbilityStateOnCooldown();
-      MonoInstance.Instance.runAfterDelay(() => { 
-        this.resetAbility();
-        squareColor.ChangeColor(3,false);
-      }, this.freezeDuration);
-      MonoInstance.Instance.runAfterDelay(() => { this.setAbilityStateReady(); }, this.cooldownTime);
     }
+    MonoInstance.Instance.runAfterDelay(() => { this.resetAbility(); }, freezeDuration);
+    MonoInstance.Instance.runAfterDelay(() =>
+    {
+      this.setAbilityStateReady();
+      squareColor.ChangeColor(3, false);
+    }, this.cooldownTime);
   }
 
   protected override void resetAbility()

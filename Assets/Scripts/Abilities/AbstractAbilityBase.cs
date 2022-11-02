@@ -6,16 +6,16 @@ public abstract class AbstractAbilityBase : ScriptableObject
 {
 
   [SerializeField] public new string name;
-  [SerializeField] public int cooldownTime;
+  [SerializeField] public float cooldownTime;
   protected Sprite image;
   [SerializeField] public int abilityID;
-  protected enum AbilityState
+  public enum AbilityState
   {
     ready, cooldown
   }
 
-  protected AbilityState state = AbilityState.ready;
-  public AbstractAbilityBase(string name, int cooldownTime, int abilityID)
+  public AbilityState state = AbilityState.ready;
+  public AbstractAbilityBase(string name, float cooldownTime, int abilityID)
   {
     this.name = name;
     this.cooldownTime = cooldownTime;

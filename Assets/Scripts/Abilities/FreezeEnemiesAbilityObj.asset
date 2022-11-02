@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Freeze
   cooldownTime: 3
   abilityID: 3
-  freezeDuration: 4
+  state: 0
+  maxFreezeDuration: 4

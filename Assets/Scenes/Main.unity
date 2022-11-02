@@ -1278,11 +1278,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Abilities:
-  - {fileID: 11400000, guid: 0fb09bf75860a8e4bbc4ba1d372d3b98, type: 2}
   - {fileID: 11400000, guid: 3abaca1b6db04744e8d8b3c81a572fc5, type: 2}
-  - {fileID: 11400000, guid: dfc320a321def1d478758210e7478bc0, type: 2}
+  - {fileID: 11400000, guid: 0fb09bf75860a8e4bbc4ba1d372d3b98, type: 2}
+  - {fileID: 11400000, guid: 6265ad186d787c446a49c38dbd836ebd, type: 2}
   - {fileID: 11400000, guid: ea9e81079cbe0124b98262a3bd1e5dea, type: 2}
   audioInputManager: {fileID: 1290247114}
+  TravaLingua: {fileID: 1053224480}
 --- !u!1 &299967167
 GameObject:
   m_ObjectHideFlags: 0
@@ -40421,7 +40422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BombPrefab: {fileID: 3646208525597204188, guid: 598f42fdd6db54c4b9813c05367da32f, type: 3}
-  abilityManager: {fileID: 11400000, guid: 83397696fa8b6904eb44cb5d5af90351, type: 2}
+  abilityManager: {fileID: 288305684}
 --- !u!1 &1909949920
 GameObject:
   m_ObjectHideFlags: 0

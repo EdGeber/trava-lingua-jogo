@@ -26,11 +26,10 @@ public class AudioInputManager : MonoBehaviour
 
   private bool hasStarted = false;
   private string[] travaLinguaArray;
-    private bool gameIsPaused = PauseBehaviour.GameIsPaused;
+  private bool gameIsPaused = PauseBehaviour.GameIsPaused;
   // Start is called before the first frame update
   void Start()
   {
-    travaLinguaArray = TravaLingua.text.Split(" ");
     dictationEngine.StartDictationEngine();
   }
 
@@ -46,6 +45,7 @@ public class AudioInputManager : MonoBehaviour
         // DO SOMETHING
         if (timer >= MonoInstance.recognitionDelay)
         {
+          travaLinguaArray = TravaLingua.text.Split(" ");
           RecognitionHypothesis.text = dictationEngine.resultOfHypotesis;
           string[] recognitionHypothesisArray = RecognitionHypothesis.text.Split(" ");
           for (int i = 0; i < travaLinguaArray.Length; i++)

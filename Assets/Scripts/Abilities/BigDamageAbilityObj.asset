@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Big Damage
   cooldownTime: 2
-  abilityID: 1
-  bigDamage: 20
+  abilityID: 0
+  state: 0
+  maxBigDamage: 20
