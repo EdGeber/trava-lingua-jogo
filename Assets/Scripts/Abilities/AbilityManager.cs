@@ -29,7 +29,7 @@ public class AbilityManager : MonoBehaviour
       audioInputManager.StartRecognising = true;
       audioInputManager.dictationEngine.resultOfHypotesis = "";
       audioInputManager.dictationEngine.resultOfRecognition = "";
-      MonoInstance.Instance.runAfterDelay(() => { selectedAbility.callAbility(1.0f); }, MonoInstance.recognitionDelay + 1.0f);
+      MonoInstance.Instance.runAfterDelay(() => { selectedAbility.callAbility(audioInputManager.correctWordsRatio); }, MonoInstance.recognitionDelay + 1.0f);
       selectedAbility.setAbilityStateOnCooldown();
     }
   }
