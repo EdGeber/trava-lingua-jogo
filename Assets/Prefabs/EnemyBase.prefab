@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1242614345
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6fd30714e90845c97a9e730a1df34268, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,6 +105,9 @@ MonoBehaviour:
   attackDamage: 0
   attackPeriod: 1
   attackDistance: 0.05
+  slowAudioSource: {fileID: 0}
+  freezeAudioSource: {fileID: 0}
+  bigDamageAudioSource: {fileID: 0}
   health: 50
   isPainted: 0
 --- !u!95 &9080953483971606737
