@@ -24,8 +24,10 @@ public class AbilityManager : MonoBehaviour
     if (selectedAbility.state == AbstractAbilityBase.AbilityState.ready)
     {
       TravaLingua.text = TL.pegaTravaLinguas();
-      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
-      squareColor.ChangeColor(abilityID, true);
+      SkillHudBehaviour hudIcons = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+      CooldownBarBehaviour cdManager = GameObject.Find("HUD").GetComponent<CooldownBarBehaviour>();
+      hudIcons.ChangeColor(abilityID, true);
+      cdManager.StartCooldownBar();
       audioInputManager.StartRecognising = true;
       audioInputManager.dictationEngine.resultOfHypotesis = "";
       audioInputManager.dictationEngine.resultOfRecognition = "";

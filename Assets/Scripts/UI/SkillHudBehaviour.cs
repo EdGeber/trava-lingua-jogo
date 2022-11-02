@@ -18,4 +18,17 @@ public class SkillHudBehaviour : MonoBehaviour
             skillSquare.color = new Color(0.286275f,0.450980f,0.517647f,1f);
         }
     }
+
+    public void ActivateVoice(bool activate)
+    {
+        SpriteRenderer voiceIcon = transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>();
+        if (activate)
+        {
+            voiceIcon.color = new Color(1f,1f,1f,1f);
+        }
+        else
+        {
+            voiceIcon.color = new Color(0.301961f,0.301961f,0.301961f,1f);
+        }
+    }
 }
