@@ -4,6 +4,7 @@ public class DictationEngine : MonoBehaviour
 {
   public DictationRecognizer dictationRecognizer;
   public string resultOfRecognition;
+  public string resultOfHypotesis;
 
   // void Update()
   // {
@@ -14,7 +15,8 @@ public class DictationEngine : MonoBehaviour
   // }
   public void DictationRecognizer_OnDictationHypothesis(string text)
   {
-    // Debug.Log("Dictation hypothesis: " + text);
+    Debug.Log("Dictation hypothesis: " + text);
+    resultOfHypotesis = text;
   }
   private void DictationRecognizer_OnDictationComplete(DictationCompletionCause completionCause)
   {
@@ -39,7 +41,7 @@ public class DictationEngine : MonoBehaviour
   }
   public void DictationRecognizer_OnDictationResult(string text, ConfidenceLevel confidence)
   {
-    // Debug.Log("Dictation result: " + text);
+    Debug.Log("Dictation result: " + text);
     resultOfRecognition = text;
   }
   private void DictationRecognizer_OnDictationError(string error, int hresult)

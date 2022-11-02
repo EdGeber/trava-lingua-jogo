@@ -137,4 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puddleRemotionTimer: 2
-  paintDuration: 5
+  paintDuration: 20
+  receivedInitialPuddleDamageDuration: 0
+  timerTrigger: 5

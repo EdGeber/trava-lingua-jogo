@@ -6,24 +6,27 @@ using UnityEditor;
 [CreateAssetMenu]
 public class CureAbility : AbstractAbilityBase
 {
-  [SerializeField] private float cureAmount = 20f;
+  [SerializeField] private float maxCureAmount = 20f;
 
-  public CureAbility() : base("Cure", 3, 2) { }
+  public CureAbility() : base("Cure", 3.0f, 2) { }
 
-  public override void callAbility()
+  public override void callAbility(float effectFactor = 0.0f)
   {
-    if (this.state == AbilityState.ready)
+    SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+    PlayerHealth playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+    if (effectFactor > 0.75f)
     {
-      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
-      squareColor.ChangeColor(2,true);
-      PlayerHealth playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
-      playerHealth.UpdateHealth(cureAmount);
-      this.setAbilityStateOnCooldown();
-      MonoInstance.Instance.runAfterDelay(() => { 
-        this.resetAbility();
-        squareColor.ChangeColor(2,false);
-      }, this.cooldownTime);
+      playerHealth.UpdateHealth(maxCureAmount);
     }
+    else if (effectFactor > 0.3f)
+    {
+      playerHealth.UpdateHealth(maxCureAmount / 2);
+    }
+    MonoInstance.Instance.runAfterDelay(() =>
+    {
+      this.resetAbility();
+      squareColor.ChangeColor(2, false);
+    }, this.cooldownTime);
   }
 
 }

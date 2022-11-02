@@ -4,7 +4,6 @@ public class PaintPuddle : MonoBehaviour
 {
   private TL TL;
   public float puddleRemotionTimer = 2;
-  public float paintDuration = 5;
   public float receivedInitialPuddleDamageDuration = 0;
   public float timerTrigger = 5;
 
@@ -33,7 +32,6 @@ public class PaintPuddle : MonoBehaviour
         enemy.TakeDamage(20);
         enemy.setReceivedInitialPuddleDamage(true);
       }
-      TL.runAfterDelay(() => enemy.isPainted = false, paintDuration);
       enemy.setReceivedInitialPuddleDamage(false);
     }
   }

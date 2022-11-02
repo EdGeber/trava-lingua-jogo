@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using TMPro;
 
-[CreateAssetMenu]
-public class AbilityManager : ScriptableObject
+public class AbilityManager : MonoBehaviour
 {
   [SerializeField] public List<AbstractAbilityBase> Abilities;
+  [SerializeField] public AudioInputManager audioInputManager;
+  public TextMeshProUGUI TravaLingua;
 
   public void StartWithAbilitiesReady()
   {
@@ -16,27 +18,39 @@ public class AbilityManager : ScriptableObject
     }
   }
 
+  private void callAbilityProcedure(int abilityID)
+  {
+    var selectedAbility = Abilities.Find(ability => ability.abilityID == abilityID);
+    if (selectedAbility.state == AbstractAbilityBase.AbilityState.ready)
+    {
+      TravaLingua.text = TL.pegaTravaLinguas();
+      SkillHudBehaviour squareColor = GameObject.Find("HUD").GetComponent<SkillHudBehaviour>();
+      squareColor.ChangeColor(abilityID, true);
+      audioInputManager.StartRecognising = true;
+      audioInputManager.dictationEngine.resultOfHypotesis = "";
+      audioInputManager.dictationEngine.resultOfRecognition = "";
+      MonoInstance.Instance.runAfterDelay(() => { selectedAbility.callAbility(audioInputManager.correctWordsRatio); }, MonoInstance.recognitionDelay + 1.0f);
+      selectedAbility.setAbilityStateOnCooldown();
+    }
+  }
+
   public void callSlowEnemiesAbility()
   {
-    var slowEnemiesAbility = Abilities.Find(ability => ability.abilityID == 0);
-    slowEnemiesAbility.callAbility();
+    callAbilityProcedure(1);
   }
 
   public void callBigDamageAbility()
   {
-    var bigDamageAbility = Abilities.Find(ability => ability.abilityID == 1);
-    bigDamageAbility.callAbility();
+    callAbilityProcedure(0);
   }
 
   public void callCureAbility()
   {
-    var cureAbility = Abilities.Find(ability => ability.abilityID == 2);
-    cureAbility.callAbility();
+    callAbilityProcedure(2);
   }
 
   public void callFreezeAbility()
   {
-    var freezeAbility = Abilities.Find(ability => ability.abilityID == 3);
-    freezeAbility.callAbility();
+    callAbilityProcedure(3);
   }
 }

@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Cure
   cooldownTime: 3
   abilityID: 2
-  cureAmount: 20
+  state: 0
+  maxCureAmount: 20
