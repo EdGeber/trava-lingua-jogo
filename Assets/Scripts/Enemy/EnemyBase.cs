@@ -55,7 +55,6 @@ public class EnemyBase : MonoBehaviour
       // TODO: attack animation
       anim.SetFloat("horizontal", 0);
       anim.SetFloat("vertical", 0);
-      anim.SetFloat("vitality", health);
       anim.SetBool("isMoving", false);
       if (attackPeriod <= canAttack && attackDistance >= displacement.magnitude)
       {
@@ -68,6 +67,7 @@ public class EnemyBase : MonoBehaviour
   public void TakeDamage(float damage)
   {
     health -= damage;
+    anim.SetFloat("vitality", health);
     if (health <= 0)
     {
       attackPeriod = 100f;

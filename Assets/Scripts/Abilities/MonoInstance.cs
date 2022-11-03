@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonoInstance : MonoBehaviour
 {
   public static MonoInstance Instance { get; private set; }
-  public static float recognitionDelay = 5.0f;
+  public static float recognitionDelay = 6.0f;
 
   private void Awake()
   {
