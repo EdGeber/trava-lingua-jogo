@@ -19,6 +19,7 @@ public class EnemyBase : MonoBehaviour
   public float health = 50f;
   public bool isPainted = false;
   private bool receivedInitialPuddleDamage = false;
+  private SpriteRenderer _spriteRenderer;
 
 
   //[Header("Health")] descobrir para que servem Headers
@@ -30,10 +31,14 @@ public class EnemyBase : MonoBehaviour
     anim = GetComponent<Animator>();
     player = GameObject.Find("Player").GetComponent<Transform>();
     this.InitialSpeed = this.speed;
+    _spriteRenderer = GetComponent<SpriteRenderer>();
   }
 
   private void Update()
   {
+    if(isPainted){
+      _spriteRenderer.color = Color.cyan;
+    }
     if (!PauseBehaviour.GameIsPaused)
     {
       canAttack += Time.deltaTime;

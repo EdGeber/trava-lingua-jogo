@@ -105,9 +105,6 @@ MonoBehaviour:
   attackDamage: 0
   attackPeriod: 1
   attackDistance: 0.05
-  slowAudioSource: {fileID: 0}
-  freezeAudioSource: {fileID: 0}
-  bigDamageAudioSource: {fileID: 0}
   health: 50
   isPainted: 0
 --- !u!95 &9080953483971606737
