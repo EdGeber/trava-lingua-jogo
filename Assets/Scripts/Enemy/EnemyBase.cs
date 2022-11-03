@@ -53,7 +53,8 @@ public class EnemyBase : MonoBehaviour
   void FixedUpdate()
   {
     foreach(GameObject go in Enemies){
-            if (go != gameObject){
+            if (go == null) {}
+            else if (go != gameObject){
                 float distance = Vector2.Distance(go.transform.position, this.transform.position);
                 if (distance < spacing){
                   //Isso aqui ta zuado. Uma opção melhor é a fazer o inimigo ficar parado por um momento
