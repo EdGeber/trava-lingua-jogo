@@ -41,6 +41,8 @@ public class EnemyBase : MonoBehaviour
   {
     if(isPainted){
       _spriteRenderer.color = Color.cyan;
+    } else{
+      _spriteRenderer.color = Color.white;
     }
     if (!PauseBehaviour.GameIsPaused)
     {
