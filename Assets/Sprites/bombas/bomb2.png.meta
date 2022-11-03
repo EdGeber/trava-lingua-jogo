@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95a228975f4144b45b1215f90f0c157f
+guid: ecea627f94c7f2a458e86725fc1c36a0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 516e000e7821b6748a04d19679a561da
-      internalID: 1547799209
+      spriteID: a4586744764908e49b4b6b23bc12eb08
+      internalID: -249765965
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2975d36d3ee589341bcb8017cbbdf291
-      internalID: 1534222664
+      spriteID: 8eaca9b0b9798ee49a2c63a6d9fdc403
+      internalID: 1631165723
       vertices: []
       indices: 
       edges: []
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a23aa189ca4f6147b4fd85ef3cbb649
-      internalID: -1422821108
+      spriteID: 1ff9dcafc1de1f54caa82ac31d727c04
+      internalID: -1262848420
       vertices: []
       indices: 
       edges: []
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ab226180f774b8469d3650c8d3ae628
-      internalID: -36343570
+      spriteID: 53220192e78d67b49aa4d12cab48dfdc
+      internalID: -1909415528
       vertices: []
       indices: 
       edges: []
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52db869a115393b4eace53f17ba3bac0
-      internalID: -314386383
+      spriteID: 8d6a52405f1c83f4e80095e69d5ebcbc
+      internalID: 798912034
       vertices: []
       indices: 
       edges: []
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e7a3be5e23e3f74e9fd57f482c00db8
-      internalID: 1994294740
+      spriteID: f47e3a2d46b3e4943b9bfe58ebf63142
+      internalID: -707109802
       vertices: []
       indices: 
       edges: []
@@ -245,134 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29d746b9f86b5a94985cd4cd54c3ca3d
-      internalID: -1758263859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 683ac849646bf7748a3f28074a58b327
-      internalID: -1535511068
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_8
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 81700a98ff8dca54cbf6aee2158eaddf
-      internalID: 888130346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50930835c4be94a448a385ce9cc574e0
-      internalID: 828756992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_10
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4e8bb8f17f9df149b95ad7ccf27f214
-      internalID: 1017428940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_11
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67324639adb71ba49b605bab6fbe9666
-      internalID: 1914616831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_12
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13f958d259d592c4896c22cd996feecf
-      internalID: 1770196489
+      spriteID: f6ef8a2e7f1929347b0fc14d7a41a878
+      internalID: -1778396688
       vertices: []
       indices: 
       edges: []
@@ -392,8 +266,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2958d46367712bb41a7904572d180e15
-      internalID: 2140353595
+      spriteID: e21d9abbbdc6a124999818cee3d35bc4
+      internalID: 1293493326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_12
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f712d5295172b54ca40a8427f4768c1
+      internalID: -372714973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5445dc7c6913f4990d4ca43250477c
+      internalID: -1768279693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e88fed125be1404ca0b3213c8887ad9
+      internalID: 1030707753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d84f9775b2f33244d85c0da10dff5649
+      internalID: -1695750789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87fd007d50ba494aa23c97536b78b5f
+      internalID: -962648353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fe60df44f2403c408ffd10b5fc9b310
+      internalID: -264502245
       vertices: []
       indices: 
       edges: []
@@ -409,20 +409,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bomb_0: 1547799209
-      bomb_1: 1534222664
-      bomb_7: -1535511068
-      bomb_9: 828756992
-      bomb_12: 1770196489
-      bomb_3: -36343570
-      bomb_8: 888130346
-      bomb_2: -1422821108
-      bomb_11: 1914616831
-      bomb_5: 1994294740
-      bomb_13: 2140353595
-      bomb_6: -1758263859
-      bomb_10: 1017428940
-      bomb_4: -314386383
+      bomb_0: -249765965
+      bomb_1: 1631165723
+      bomb_9: -1695750789
+      bomb_12: -372714973
+      bomb_7: -1768279693
+      bomb_3: -1909415528
+      bomb_8: 1030707753
+      bomb_2: -1262848420
+      bomb_11: -264502245
+      bomb_5: -707109802
+      bomb_13: 1293493326
+      bomb_6: -1778396688
+      bomb_10: -962648353
+      bomb_4: 798912034
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

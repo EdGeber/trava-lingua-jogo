@@ -7,7 +7,7 @@ using UnityEditor;
 public class FreezeEnemiesAbility : AbstractAbilityBase
 {
   private List<EnemyBase> freezedEnemies = new List<EnemyBase>();
-  [SerializeField] private float maxFreezeDuration = 4.0f;
+  [SerializeField] private float maxFreezeDuration = 8.0f;
 
   public FreezeEnemiesAbility() : base("Freeze", 3.0f, 3) { }
 
