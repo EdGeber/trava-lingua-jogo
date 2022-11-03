@@ -6,7 +6,7 @@ using UnityEditor;
 [CreateAssetMenu]
 public class BigDamageAbility : AbstractAbilityBase
 {
-  [SerializeField] private float maxBigDamage = 20.0f;
+  [SerializeField] private float maxBigDamage = 50.0f;
 
   public BigDamageAbility() : base("Big Damage", 2.0f, 0) { }
 
