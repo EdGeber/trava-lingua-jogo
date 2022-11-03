@@ -20,18 +20,21 @@ public class EnemyBase : MonoBehaviour
   public bool isPainted = false;
   private bool receivedInitialPuddleDamage = false;
   private SpriteRenderer _spriteRenderer;
-
-
+  GameObject[] Enemies; //relacionado ao espaçamento de enemies
+  [SerializeField] private float spacing = 0.15f; //relacionado ao espaçamento de enemies
+  Vector2 displacement;
   //[Header("Health")] descobrir para que servem Headers
   private float canAttack;
-
+  private TL TL;
   private void Start()
   {
+    TL = GameObject.Find("/System/TL").GetComponent<TL>();
     attackDamage = 10f;
     anim = GetComponent<Animator>();
     player = GameObject.Find("Player").GetComponent<Transform>();
     this.InitialSpeed = this.speed;
     _spriteRenderer = GetComponent<SpriteRenderer>();
+    Enemies = GameObject.FindGameObjectsWithTag("Enemy");
   }
 
   private void Update()
@@ -47,7 +50,19 @@ public class EnemyBase : MonoBehaviour
 
   void FixedUpdate()
   {
-    Vector2 displacement = player.position - transform.position;
+    foreach(GameObject go in Enemies){
+            if (go != gameObject){
+                float distance = Vector2.Distance(go.transform.position, this.transform.position);
+                if (distance < spacing){
+                  //Isso aqui ta zuado. Uma opção melhor é a fazer o inimigo ficar parado por um momento
+                    this.speed = 0.5f;
+                    displacement = transform.position - go.transform.position;
+                    transform.Translate(displacement * Time.deltaTime);
+                    TL.runAfterDelay(() => {this.speed = this.InitialSpeed;}, 0.3f);
+                }
+            } 
+        }
+    displacement = player.position - transform.position;
     if (attackDistance < displacement.magnitude && this.speed != 0)
     {
       rb.MovePosition(rb.position + displacement.normalized * speed * Time.fixedDeltaTime);
