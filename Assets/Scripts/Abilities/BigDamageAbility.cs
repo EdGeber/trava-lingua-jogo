@@ -20,6 +20,7 @@ public class BigDamageAbility : AbstractAbilityBase
       EnemyBase enemy = GO.GetComponent<EnemyBase>();
       if (enemy.isPainted)
       {
+        SoundEffectsManager.instanceSEM.playBigDamageAudio();
         enemy.TakeDamage(bigDamage);
         enemy.isPainted = false;
       }

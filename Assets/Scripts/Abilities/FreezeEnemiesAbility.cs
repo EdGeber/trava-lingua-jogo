@@ -20,6 +20,7 @@ public class FreezeEnemiesAbility : AbstractAbilityBase
     {
       if (enemy.isPainted)
       {
+        SoundEffectsManager.instanceSEM.playFreezeAudio();
         freezedEnemies.Add(enemy);
         enemy.Speed = 0;
         enemy.isPainted = false;

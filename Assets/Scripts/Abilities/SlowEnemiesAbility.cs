@@ -23,6 +23,7 @@ public class SlowEnemiesAbility : AbstractAbilityBase
     {
       if (enemy.isPainted)
       {
+        SoundEffectsManager.instanceSEM.playSlowAudio();
         slowedEnemies.Add(enemy);
         enemy.Speed = enemy.Speed * (slowFactor);
         enemy.isPainted = false;

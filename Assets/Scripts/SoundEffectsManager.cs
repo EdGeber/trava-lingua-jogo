@@ -9,7 +9,6 @@ public class SoundEffectsManager : MonoBehaviour
   [SerializeField] public AudioSource freezeAudioSource;
   [SerializeField] public AudioSource bigDamageAudioSource;
   [SerializeField] public AudioSource healAudioSource;
-  [SerializeField] public AudioSource bombAudioSource;
 
   private void Awake()
   {
@@ -34,10 +33,5 @@ public class SoundEffectsManager : MonoBehaviour
   public void playHealAudio()
   {
     this.healAudioSource.Play();
-  }
-
-  public void playBombAudio()
-  {
-    this.bombAudioSource.Play();
   }
 }

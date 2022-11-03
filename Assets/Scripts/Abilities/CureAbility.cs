@@ -16,10 +16,12 @@ public class CureAbility : AbstractAbilityBase
     PlayerHealth playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
     if (effectFactor > 0.75f)
     {
+      SoundEffectsManager.instanceSEM.playHealAudio();
       playerHealth.UpdateHealth(maxCureAmount);
     }
     else if (effectFactor > 0.3f)
     {
+      SoundEffectsManager.instanceSEM.playHealAudio();
       playerHealth.UpdateHealth(maxCureAmount / 2);
     }
     MonoInstance.Instance.runAfterDelay(() =>
